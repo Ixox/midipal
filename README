@@ -29,6 +29,9 @@ This MidiPal firmware has been modified to support MidiBud push buttons.
 
 Changes:
 
-* Pressing a button selects one of the first four app parameter pages
-* Pressing a button in User Program selecte one of the four user programs
+* Pressing a button usually selects one of the first four app parameter pages,
+  with following exceptions:
+* In User Program pressing a button selects one of the four user programs
+* In SH-01 sequencer recording mode pressing button 1 inserts rest, button 2 a tie,
+  button 3 stops recording and button 4 stops recording and starts playback
 * No Controller app (MidiBud does not have analogue inputs)

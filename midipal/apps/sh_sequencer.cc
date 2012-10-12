@@ -84,7 +84,7 @@ const prog_AppInfo ShSequencer::app_info_ PROGMEM = {
   &OnIncrement, // uint8_t (*OnIncrement)(int8_t);
   &OnClick, // uint8_t (*OnClick)();
 #ifdef MIDIBUD_FIRMWARE
-  NULL, // uint8_t (*OnSwitch)(uint8_t);
+  &OnSwitch, // uint8_t (*OnSwitch)(uint8_t);
 #else
   NULL, // uint8_t (*OnPot)(uint8_t, uint8_t);
 #endif
@@ -394,5 +394,29 @@ void ShSequencer::Tick() {
     }
   }
 }
+
+#ifdef MIDIBUD_FIRMWARE
+/* static */
+uint8_t ShSequencer::OnSwitch(uint8_t sw) {
+  
+  if (!recording_)
+    return 0;
+
+  switch (sw) {
+  case SWITCH_1: rec_mode_menu_option_ = 0; break;
+  case SWITCH_2: rec_mode_menu_option_ = 1; break;
+  case SWITCH_3: 
+  case SWITCH_4: rec_mode_menu_option_ = 2; break;
+  }
+
+  OnClick();
+
+  if (sw == SWITCH_4) {
+    Start();
+  }
+
+  return 1;
+}
+#endif
 
 } }  // namespace midipal::apps
