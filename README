@@ -25,6 +25,9 @@ A midi in, a midi out, a small display, an encoder ; 20 awesome features:
 
 ---
 
-This MidiPal firmware has been modified to support MidiBud push buttons:
+This MidiPal firmware has been modified to support MidiBud push buttons.
 
-* Quickly select first four application parameter pages by pressing a button
+Changes:
+
+* Pressing a buttons selects one of the first four application parameter pages
+* No Controller app (MidiBud does not have analogue inputs)
