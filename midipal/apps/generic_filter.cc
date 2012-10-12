@@ -64,7 +64,7 @@ const prog_AppInfo GenericFilter::app_info_ PROGMEM = {
   NULL, // uint8_t (*OnIncrement)(int8_t);
   NULL, // uint8_t (*OnClick)();
 #ifdef MIDIBUD_FIRMWARE
-  NULL, // uint8_t (*OnSwitch)(uint8_t);
+  &OnSwitch, // uint8_t (*OnSwitch)(uint8_t);
 #else
   NULL, // uint8_t (*OnPot)(uint8_t, uint8_t);
 #endif
@@ -199,5 +199,13 @@ void GenericFilter::OnRawMidiData(
   
   app.Send(status, data, data_size);
 }
+
+#ifdef MIDIBUD_FIRMWARE
+/* static */
+uint8_t GenericFilter::OnSwitch(uint8_t sw) {
+  SetParameter(0, sw);
+  return 1;
+}
+#endif
 
 } }  // namespace midipal::apps

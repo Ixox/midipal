@@ -29,5 +29,6 @@ This MidiPal firmware has been modified to support MidiBud push buttons.
 
 Changes:
 
-* Pressing a buttons selects one of the first four application parameter pages
+* Pressing a button selects one of the first four app parameter pages
+* Pressing a button in User Program selecte one of the four user programs
 * No Controller app (MidiBud does not have analogue inputs)
