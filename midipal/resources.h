@@ -34,7 +34,7 @@
 
 namespace midipal {
 
-typedef uint8_t ResourceId;
+typedef uint16_t ResourceId;
 
 extern const prog_char* string_table[];
 
@@ -104,30 +104,30 @@ extern const prog_uint8_t wav_res_lfo_waveforms[] PROGMEM;
 #define STR_RES_SEQUENCR 20  // sequencr
 #define STR_RES_CC_LFO 21  // cc lfo
 #define STR_RES_TANPURA 22  // tanpura
-#define STR_RES_NOTENUKE 23  // notenuke
-#define STR_RES_SYSXDUMP 24  // sysxdump
-#define STR_RES__RESET_ 25  // !reset!
-#define STR_RES___V1_2__ 26  // ¥ v1.2 ¥
-#define STR_RES_SNDOFF 27  // sndOff
-#define STR_RES_RSTCTR 28  // rstCtr
-#define STR_RES_NOTOFF 29  // notOff
-#define STR_RES_OMNOFF 30  // omnOff
-#define STR_RES_OMNION 31  // omniOn
-#define STR_RES_MONOON 32  // monoOn
-#define STR_RES_POLYON 33  // polyOn
-#define STR_RES_SYSX__ 34  // sysx..
-#define STR_RES__SYSX_ 35  // .sysx.
-#define STR_RES___SYSX 36  // ..sysx
-#define STR_RES_START 37  // start
-#define STR_RES_STOP 38  // stop
-#define STR_RES_CONT_ 39  // cont.
-#define STR_RES_RESET 40  // reset
-#define STR_RES_CHN 41  // chn
-#define STR_RES_ALL 42  // all
-#define STR_RES_REST 43  // rest
-#define STR_RES_TIE 44  // tie
-#define STR_RES_EXIT 45  // exit
-#define STR_RES_FLT 46  // flt
+#define STR_RES_SETTINGS 23  // settings
+#define STR_RES_NOTENUKE 24  // notenuke
+#define STR_RES_SYSXDUMP 25  // sysxdump
+#define STR_RES__RESET_ 26  // !reset!
+#define STR_RES___V1_2__ 27  // ¥ v1.2 ¥
+#define STR_RES_SNDOFF 28  // sndOff
+#define STR_RES_RSTCTR 29  // rstCtr
+#define STR_RES_NOTOFF 30  // notOff
+#define STR_RES_OMNOFF 31  // omnOff
+#define STR_RES_OMNION 32  // omniOn
+#define STR_RES_MONOON 33  // monoOn
+#define STR_RES_POLYON 34  // polyOn
+#define STR_RES_SYSX__ 35  // sysx..
+#define STR_RES__SYSX_ 36  // .sysx.
+#define STR_RES___SYSX 37  // ..sysx
+#define STR_RES_START 38  // start
+#define STR_RES_STOP 39  // stop
+#define STR_RES_CONT_ 40  // cont.
+#define STR_RES_RESET 41  // reset
+#define STR_RES_CHN 42  // chn
+#define STR_RES_ALL 43  // all
+#define STR_RES_REST 44  // rest
+#define STR_RES_TIE 45  // tie
+#define STR_RES_EXIT 46  // exit
 #define STR_RES_OFF 47  // off
 #define STR_RES_ON 48  // on
 #define STR_RES_NO 49  // no
@@ -330,11 +330,18 @@ extern const prog_uint8_t wav_res_lfo_waveforms[] PROGMEM;
 #define STR_RES_MA 246  // ma
 #define STR_RES_NI 247  // ni
 #define STR_RES_SA 248  // sa
-#define STR_RES_RES 249  // res
-#define STR_RES_FRE 250  // fre
-#define STR_RES__NOT 251  // not
-#define STR_RES_CHD 252  // chd
-#define STR_RES_PRG 253  // prg
+#define STR_RES_XFE 249  // xFE
+#define STR_RES_LET 250  // let
+#define STR_RES_FLT 251  // flt
+#define STR_RES_HLD 252  // hld
+#define STR_RES__5S 253  // .5s
+#define STR_RES__1S 254  // 1s
+#define STR_RES__2S 255  // 2s
+#define STR_RES_RES 256  // res
+#define STR_RES_FRE 257  // fre
+#define STR_RES__NOT 258  // not
+#define STR_RES_CHD 259  // chd
+#define STR_RES_PRG 260  // prg
 #define LUT_RES_ARPEGGIATOR_PATTERNS 0
 #define LUT_RES_ARPEGGIATOR_PATTERNS_SIZE 22
 #define LUT_RES_DRUM_PATTERNS 1

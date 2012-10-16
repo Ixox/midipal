@@ -21,7 +21,7 @@
 // make resources
 
 
-#include "midipal/resources.h"
+#include "midipal\resources.h"
 
 namespace midipal {
 
@@ -48,6 +48,7 @@ static const prog_char str_res_scale[] PROGMEM = "scale";
 static const prog_char str_res_sequencr[] PROGMEM = "sequencr";
 static const prog_char str_res_cc_lfo[] PROGMEM = "cc lfo";
 static const prog_char str_res_tanpura[] PROGMEM = "tanpura";
+static const prog_char str_res_settings[] PROGMEM = "settings";
 static const prog_char str_res_notenuke[] PROGMEM = "notenuke";
 static const prog_char str_res_sysxdump[] PROGMEM = "sysxdump";
 static const prog_char str_res__reset_[] PROGMEM = "!reset!";
@@ -71,7 +72,6 @@ static const prog_char str_res_all[] PROGMEM = "all";
 static const prog_char str_res_rest[] PROGMEM = "rest";
 static const prog_char str_res_tie[] PROGMEM = "tie";
 static const prog_char str_res_exit[] PROGMEM = "exit";
-static const prog_char str_res_flt[] PROGMEM = "flt";
 static const prog_char str_res_off[] PROGMEM = "off";
 static const prog_char str_res_on[] PROGMEM = "on";
 static const prog_char str_res_no[] PROGMEM = "no";
@@ -262,6 +262,13 @@ static const prog_char str_res_pa[] PROGMEM = "pa";
 static const prog_char str_res_ma[] PROGMEM = "ma";
 static const prog_char str_res_ni[] PROGMEM = "ni";
 static const prog_char str_res_sa[] PROGMEM = "sa";
+static const prog_char str_res_xfe[] PROGMEM = "xFE";
+static const prog_char str_res_let[] PROGMEM = "let";
+static const prog_char str_res_flt[] PROGMEM = "flt";
+static const prog_char str_res_hld[] PROGMEM = "hld";
+static const prog_char str_res__5s[] PROGMEM = ".5s";
+static const prog_char str_res__1s[] PROGMEM = "1s";
+static const prog_char str_res__2s[] PROGMEM = "2s";
 static const prog_char str_res_res[] PROGMEM = "res";
 static const prog_char str_res_fre[] PROGMEM = "fre";
 static const prog_char str_res_chd[] PROGMEM = "chd";
@@ -292,6 +299,7 @@ PROGMEM const prog_char* string_table[] = {
   str_res_sequencr,
   str_res_cc_lfo,
   str_res_tanpura,
+  str_res_settings,
   str_res_notenuke,
   str_res_sysxdump,
   str_res__reset_,
@@ -315,7 +323,6 @@ PROGMEM const prog_char* string_table[] = {
   str_res_rest,
   str_res_tie,
   str_res_exit,
-  str_res_flt,
   str_res_off,
   str_res_on,
   str_res_no,
@@ -518,6 +525,13 @@ PROGMEM const prog_char* string_table[] = {
   str_res_ma,
   str_res_ni,
   str_res_sa,
+  str_res_xfe,
+  str_res_let,
+  str_res_flt,
+  str_res_hld,
+  str_res__5s,
+  str_res__1s,
+  str_res__2s,
   str_res_res,
   str_res_fre,
   str_res_not,

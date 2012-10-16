@@ -54,6 +54,7 @@
 #include "midipal/apps/sync_latch.h"
 #include "midipal/apps/splitter.h"
 #include "midipal/apps/tanpura.h"
+#include "midipal/apps/settings.h"
 
 namespace midipal {
 
@@ -123,7 +124,8 @@ const AppInfo* registry[] = {
   &apps::EarTrainingGame::app_info_,
 #endif  // USE_TANPURA
   
-  &apps::GenericFilter::app_info_
+  &apps::GenericFilter::app_info_,
+  &apps::Settings::app_info_
 };
 
 #endif  // POLY_SEQUENCER_FIRMWARE
@@ -245,6 +247,12 @@ void App::FlushQueue(uint8_t channel) {
   while (event_scheduler.size()) {
     SendScheduledNotes(channel);
   }
+}
+
+/* static */
+uint8_t App::FilterActiveSensing()
+{
+  return apps::Settings::FilterActiveSensing();
 }
 
 /* static */

@@ -52,7 +52,8 @@ enum EepromSetting {
   SETTINGS_GENERIC_FILTER_PROGRAM = 580,
   SETTINGS_GENERIC_FILTER_SETTINGS = 640,
   SETTINGS_GENERIC_FILTER_SETTINGS_DUMP_AREA = 896,
-  SETTINGS_SETUP = 1008
+  SETTINGS_SETUP = 1008,
+  SETTINGS_SETTINGS = 1012
 };
 
 enum ClockMode {
@@ -197,7 +198,7 @@ class App {
   }
   
   static void OnRawByte(uint8_t byte) {
-   if (app_info_.OnRawByte) {
+    if (app_info_.OnRawByte && !(byte == 0xfe && FilterActiveSensing())) {
       (*app_info_.OnRawByte)(byte);
     }
   }
@@ -284,6 +285,8 @@ class App {
   static void SendLater(uint8_t note, uint8_t velocity, uint8_t when, uint8_t tag);
   static void SendScheduledNotes(uint8_t channel);
   static void FlushQueue(uint8_t channel);
+
+  static uint8_t FilterActiveSensing();
   
   static uint8_t num_apps();
   
