@@ -60,6 +60,8 @@ enum SwitchNumber {
   SWITCH_2,
   SWITCH_3,
   SWITCH_4,
+  SWITCH_5,
+  SWITCH_COUNT
 };
 #endif
 
@@ -119,6 +121,7 @@ class Ui {
   static avrlib::DebouncedSwitch<Switch2Line> switch2_;
   static avrlib::DebouncedSwitch<Switch3Line> switch3_;
   static avrlib::DebouncedSwitch<Switch4Line> switch4_;
+  static avrlib::DebouncedSwitch<Switch5Line> switch5_;
 #else
   static avrlib::PotScanner<8, 0, 8, 7> pots_;
 #endif

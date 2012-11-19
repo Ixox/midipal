@@ -35,6 +35,7 @@ DebouncedSwitch<Switch1Line> Ui::switch1_;
 DebouncedSwitch<Switch2Line> Ui::switch2_;
 DebouncedSwitch<Switch3Line> Ui::switch3_;
 DebouncedSwitch<Switch4Line> Ui::switch4_;
+DebouncedSwitch<Switch5Line> Ui::switch5_;
 #else
 PotScanner<8, 0, 8, 7> Ui::pots_;
 #endif
@@ -66,6 +67,7 @@ void Ui::Init() {
   switch2_.Init();
   switch3_.Init();
   switch4_.Init();
+  switch5_.Init();
 #else
   pots_.Init();
 #endif
@@ -164,16 +166,19 @@ void Ui::Poll() {
   }
 #ifdef MIDIBUD_FIRMWARE
   // Ui::Poll() is called at 2KHz, however DebouncedSwitch::Read() is supposed to
-  // be called at rate < 1000Hz, so read one switch per call at 500Hz
+  // be called at rate < 1000Hz, so read one switch per call at 400Hz
   switch (read_switch_) {
   case SWITCH_1: switch1_.Read(); if (switch1_.lowered()) goto ReportSwitch; break;
   case SWITCH_2: switch2_.Read(); if (switch2_.lowered()) goto ReportSwitch; break;
   case SWITCH_3: switch3_.Read(); if (switch3_.lowered()) goto ReportSwitch; break;
   case SWITCH_4: switch4_.Read(); if (switch4_.lowered()) goto ReportSwitch; break;
+  case SWITCH_5: switch5_.Read(); if (switch5_.lowered()) goto ReportSwitch; break;
 ReportSwitch: queue_.AddEvent(CONTROL_SWITCH, read_switch_, 0);
   }
 
-  read_switch_ = (read_switch_ + 1) & 3;
+  if (++read_switch_ >= SWITCH_COUNT) {
+    read_switch_ = 0;
+  }
 #else
   if (read_pots_) {
     pots_.Read();
