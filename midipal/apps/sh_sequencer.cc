@@ -406,12 +406,13 @@ uint8_t ShSequencer::OnSwitch(uint8_t sw) {
   case SWITCH_1: rec_mode_menu_option_ = 0; break;
   case SWITCH_2: rec_mode_menu_option_ = 1; break;
   case SWITCH_3: 
-  case SWITCH_4: rec_mode_menu_option_ = 2; break;
+  case SWITCH_4: 
+  case SWITCH_5: rec_mode_menu_option_ = 2; break;
   }
 
   OnClick();
 
-  if (sw == SWITCH_4) {
+  if (sw == SWITCH_4 || sw == SWITCH_5) {
     Start();
   }
 

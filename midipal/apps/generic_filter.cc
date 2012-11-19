@@ -203,7 +203,9 @@ void GenericFilter::OnRawMidiData(
 #ifdef MIDIBUD_FIRMWARE
 /* static */
 uint8_t GenericFilter::OnSwitch(uint8_t sw) {
-  SetParameter(0, sw);
+  if (sw < 4) {
+    SetParameter(0, sw);
+  }
   return 1;
 }
 #endif

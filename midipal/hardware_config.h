@@ -57,6 +57,7 @@ typedef Gpio<PortC, 0> Switch1Line;
 typedef Gpio<PortC, 1> Switch2Line;
 typedef Gpio<PortC, 2> Switch3Line;
 typedef Gpio<PortC, 3> Switch4Line;
+typedef Gpio<PortB, 4> Switch5Line;
 #endif
 
 // LEDs
