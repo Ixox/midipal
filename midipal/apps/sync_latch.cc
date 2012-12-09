@@ -86,6 +86,7 @@ const prog_AppInfo SyncLatch::app_info_ PROGMEM = {
   &num_beats_, // settings_data
   sync_latch_factory_data, // factory_data
   STR_RES_SYNCLTCH, // app_name
+  true
 };  
   
 /* static */

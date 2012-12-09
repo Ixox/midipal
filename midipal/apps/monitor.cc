@@ -72,7 +72,8 @@ const prog_AppInfo Monitor::app_info_ PROGMEM = {
   SETTINGS_MONITOR, // settings_offset
   &monitored_channel_, // settings_data
   monitor_factory_data, // factory_data
-  STR_RES_MONITOR, // app_name,
+  STR_RES_MONITOR, // app_name
+  true
 };
 
 /* static */
@@ -286,16 +287,6 @@ void Monitor::OnStop() {
 }
 
 /* static */
-void Monitor::OnActiveSensing() {
-  if (ui.editing()) {
-    return;
-  }
-  
-  line_buffer[1] = '*';
-  ui.RefreshScreen();
-}
-
-/* static */
 uint8_t Monitor::CheckChannel(uint8_t channel) {
   return (ui.editing() == 0) && 
       ((monitored_channel_ == 0) || (channel + 1 == monitored_channel_));
@@ -305,9 +296,6 @@ uint8_t Monitor::CheckChannel(uint8_t channel) {
 void Monitor::OnRawByte(uint8_t byte) {
   if (byte != 0xfe && byte != 0xf8) {
     idle_counter_ = 0;
-  }
-  if (byte == 0xfe) {
-    OnActiveSensing();
   }
   if (byte == 0xff) {
     PrintString(0xff, STR_RES_RESET);

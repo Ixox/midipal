@@ -36,6 +36,7 @@
 #include "midipal/apps/clock_divider.h"
 #include "midipal/apps/clock_source.h"
 #include "midipal/apps/clock_source_hd.h"
+#include "midipal/apps/clock_source_live.h"
 #include "midipal/apps/combiner.h"
 #include "midipal/apps/controller.h"
 #include "midipal/apps/delay.h"
@@ -52,6 +53,7 @@
 #include "midipal/apps/sequencer.h"
 #include "midipal/apps/sh_sequencer.h"
 #include "midipal/apps/sync_latch.h"
+#include "midipal/apps/settings.h"
 #include "midipal/apps/splitter.h"
 #include "midipal/apps/tanpura.h"
 
@@ -123,7 +125,8 @@ const AppInfo* registry[] = {
   &apps::EarTrainingGame::app_info_,
 #endif  // USE_TANPURA
   
-  &apps::GenericFilter::app_info_
+  &apps::GenericFilter::app_info_,
+  &apps::Settings::app_info_
 };
 
 #endif  // POLY_SEQUENCER_FIRMWARE

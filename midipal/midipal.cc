@@ -22,6 +22,7 @@
 
 #include "midi/midi.h"
 #include "midipal/app.h"
+#include "midipal/apps/settings.h"
 #include "midipal/clock.h"
 #include "midipal/event_scheduler.h"
 #include "midipal/midi_handler.h"
@@ -38,14 +39,16 @@ Serial<MidiPort, 31250, POLLED, POLLED> midi_io;
 MidiStreamParser<MidiHandler> midi_parser;
 
 volatile uint8_t num_clock_ticks = 0;
-volatile uint8_t num_clock_steps = 0;
 
 ISR(TIMER2_OVF_vect, ISR_NOBLOCK) {
   static uint8_t sub_clock;
 
   if (midi_io.readable()) {
-    LedIn::High();
-    midi_parser.PushByte(midi_io.ImmediateRead());
+    uint8_t byte = midi_io.ImmediateRead();
+    if (byte != 0xfe || !apps::Settings::filter_active_sensing()) {
+      LedIn::High();
+      midi_parser.PushByte(byte);
+    }
   }
   
   // 4kHz
@@ -57,11 +60,6 @@ ISR(TIMER2_OVF_vect, ISR_NOBLOCK) {
   while (num_clock_ticks) {
     --num_clock_ticks;
     app.OnInternalClockTick();
-  }
-  
-  while (num_clock_steps) {
-    --num_clock_steps;
-    app.OnInternalClockStep();
   }
   
   sub_clock = (sub_clock + 1) & 3;
@@ -77,12 +75,15 @@ ISR(TIMER2_OVF_vect, ISR_NOBLOCK) {
 }
 
 ISR(TIMER1_COMPA_vect) {
-  // 78kHz
   PwmChannel1A::set_frequency(clock.Tick());
   if (clock.running()) {
-    ++num_clock_ticks;
+    if (app.realtime_clock_handling()) {
+      app.OnInternalClockTick();
+    } else {
+      ++num_clock_ticks;
+    }
     if (clock.stepped()) {
-      ++num_clock_steps;
+      app.OnInternalClockStep();
     }
   }
 }
@@ -96,6 +97,10 @@ void Init() {
   
   note_stack.Init();
   event_scheduler.Init();
+  
+  // Boot the settings app.
+  app.Launch(app.num_apps() - 1);
+  app.LoadSettings();
   
   // Boot the app selector app.
   app.Launch(0);
