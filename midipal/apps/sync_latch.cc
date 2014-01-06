@@ -167,9 +167,13 @@ uint8_t SyncLatch::OnRedraw() {
       line_buffer[6] = ']';
     }
     line_buffer[7] = (state_ & STATE_RUNNING) ? '>' : 0xa5;
-    display.Print(0, line_buffer);
+
+    display.Print(1, line_buffer);
   } else if (ui.page() == 3) {
-    ui.PrintString(STR_RES_RESET);
+    ResourcesManager::LoadStringResource(STR_RES_RESET, &line_buffer[0], 16);
+    AlignRight(&line_buffer[0], 16);
+    display.Print(1, line_buffer);
+
   } else {
     return 0;
   }

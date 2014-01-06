@@ -86,7 +86,7 @@ void BpmMeter::OnInit() {
   clock.Update(31250, 0, 0);
   active_page_ = 0;
   refresh_bpm_ = 1;
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -163,7 +163,7 @@ uint8_t BpmMeter::OnRedraw() {
   if (active_page_ < 2) {
     if (refresh_bpm_ || active_page_ == 1) {
       PrintBpm();
-      ui.RefreshScreen();
+      ui.RefreshLineScreen(1);
       if (active_page_ == 0) {
         Reset();
       }
@@ -174,7 +174,7 @@ uint8_t BpmMeter::OnRedraw() {
     line_buffer[0] = 't';
     UnsafeItoa(num_ticks_, 7, &line_buffer[1]);
     AlignRight(&line_buffer[1], 7);
-    ui.RefreshScreen();
+    ui.RefreshLineScreen(1);
   }
   return 1;
 }
@@ -190,7 +190,7 @@ uint8_t BpmMeter::OnIncrement(int8_t increment) {
     }
   }
   refresh_bpm_ = 1;
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
   return 1;
 }
 
@@ -207,7 +207,8 @@ uint8_t BpmMeter::OnSwitch(uint8_t sw) {
   if (active_page_ > 2) {
     active_page_ = 2;
   }
-  ui.RefreshScreen();
+  PrintBpm();
+  ui.RefreshLineScreen(1);
   return 1;
 }
 #endif

@@ -366,13 +366,13 @@ void Ui::PrintKeyValuePair(
     line_buffer[3] = '[';
     line_buffer[7] = ']';
   }
-  display.Print(0, line_buffer);
+  display.Print(1, line_buffer);
 }
 
 /* static */
 void Ui::PrintString(uint8_t res_id) {
-  ResourcesManager::LoadStringResource(res_id, &line_buffer[0], 8);
-  AlignRight(&line_buffer[0], 8);
+  ResourcesManager::LoadStringResource(res_id, &line_buffer[0], 16);
+  AlignRight(&line_buffer[0], 16);
   display.Print(0, line_buffer);
 }
 
@@ -412,7 +412,13 @@ void Ui::PrintNote(char* buffer, uint8_t note) {
 
 /* static */
 void Ui::RefreshScreen() {
-  display.Print(0, line_buffer);
+	RefreshLineScreen(0);
 }
+
+/* static */
+void Ui::RefreshLineScreen(uint8_t line) {
+  display.Print(line, line_buffer);
+}
+
 
 }  // namespace midipal

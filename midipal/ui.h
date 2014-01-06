@@ -85,6 +85,7 @@ class Ui {
   static void PrintString(uint8_t res_id);
 
   static void RefreshScreen();
+  static void RefreshLineScreen(uint8_t line);
   
 #ifndef MIDIBUD_FIRMWARE
   static inline void set_read_pots(uint8_t value) {

@@ -137,16 +137,18 @@ uint8_t AppSelector::OnRedraw() {
   if (selected_item_ >= app.num_apps()) {
     ResourcesManager::LoadStringResource(
         STR_RES_NOTENUKE + selected_item_ - app.num_apps(),
-        &line_buffer[0], 8);
+        &line_buffer[0], 16);
   } else {
     app.Launch(selected_item_);
     ResourcesManager::LoadStringResource(
         app.app_name(),
-        &line_buffer[0], 8);
+        &line_buffer[0], 16);
   }
   app.Launch(0);
-  AlignLeft(&line_buffer[0], 8);
+  AlignLeft(&line_buffer[0], 16);
   ui.RefreshScreen();
+  ui.Clear();
+  ui.RefreshLineScreen(1);
   return 1;
 }
 

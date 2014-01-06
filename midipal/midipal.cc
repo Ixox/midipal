@@ -127,6 +127,12 @@ void Init() {
   Timer<2>::set_prescaler(2);
   Timer<2>::set_mode(TIMER_PWM_PHASE_CORRECT);
   Timer<2>::Start();
+
+  // Back to 0 to display the app title
+  app.Launch(0);
+  app.OnRedraw();
+
+  app.Launch(launch_app);
   app.Init();
   midi_io.Init();
 }

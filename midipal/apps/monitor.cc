@@ -91,7 +91,7 @@ void Monitor::OnNoteOn(uint8_t channel, uint8_t note, uint8_t velocity) {
   ui.PrintChannel(&line_buffer[0], channel);
   ui.PrintNote(&line_buffer[2], note);
   ui.PrintHex(&line_buffer[6], velocity);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -101,7 +101,7 @@ void Monitor::OnNoteOff(uint8_t channel, uint8_t note, uint8_t velocity) {
   ui.PrintNote(&line_buffer[2], note);
   line_buffer[6] = '-';
   line_buffer[7] = '-';
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -114,7 +114,7 @@ void Monitor::OnNoteAftertouch(
   ui.PrintNote(&line_buffer[2], note);
   line_buffer[6] = 'a';
   ui.PrintHex(&line_buffer[7], velocity);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -125,7 +125,7 @@ void Monitor::OnAftertouch(uint8_t channel, uint8_t velocity) {
   line_buffer[3] = 'f';
   line_buffer[4] = 't';
   ui.PrintHex(&line_buffer[6], velocity);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -166,7 +166,7 @@ void Monitor::OnControlChange(
       line_buffer[2] = '#';
       ui.PrintHex(&line_buffer[3], controller);
       ui.PrintHex(&line_buffer[6], value);
-      ui.RefreshScreen();
+      ui.RefreshLineScreen(1);
       break;
   }
 }
@@ -179,7 +179,7 @@ void Monitor::OnProgramChange(uint8_t channel, uint8_t program) {
   line_buffer[3] = 'g';
   line_buffer[4] = 'm';
   ui.PrintHex(&line_buffer[6], program);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -189,7 +189,7 @@ void Monitor::OnPitchBend(uint8_t channel, uint16_t pitch_bend) {
   line_buffer[2] = 'b';
   ui.PrintHex(&line_buffer[4], pitch_bend >> 8);
   ui.PrintHex(&line_buffer[6], pitch_bend & 0xff);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -201,7 +201,7 @@ void Monitor::PrintString(uint8_t channel, uint8_t res_id) {
   ui.PrintChannel(&line_buffer[0], channel);
   ResourcesManager::LoadStringResource(res_id, &line_buffer[2], 6);
   AlignRight(&line_buffer[2], 6);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -222,7 +222,7 @@ void Monitor::OnLocalControl(uint8_t channel, uint8_t state) {
   line_buffer[3] = 'o';
   line_buffer[4] = 'c';
   ui.PrintHex(&line_buffer[6], state);
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -268,7 +268,7 @@ void Monitor::OnClock() {
   }
   
   line_buffer[1] = 0xa5;
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
 }
 
 /* static */
@@ -306,7 +306,7 @@ void Monitor::OnRawByte(uint8_t byte) {
 /* static */
 uint8_t Monitor::OnClick() {
   ui.Clear();
-  ui.RefreshScreen();
+  ui.RefreshLineScreen(1);
   return 0;
 }
 
@@ -325,7 +325,7 @@ void Monitor::OnIdle() {
     ++idle_counter_;
     if (idle_counter_ == 60) {
       ui.Clear();
-      ui.RefreshScreen();
+      ui.RefreshLineScreen(1);
     }
   }
 }

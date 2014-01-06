@@ -35,8 +35,8 @@ using avrlib::PortD;
 using avrlib::PortC;
 using avrlib::SerialPort0;
 
-static const uint8_t kLcdWidth = 8;
-static const uint8_t kLcdHeight = 1;
+static const uint8_t kLcdWidth = 16;
+static const uint8_t kLcdHeight = 2;
 
 // MIDI
 typedef SerialPort0 MidiPort;
