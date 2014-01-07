@@ -28,7 +28,7 @@ namespace midipal {
 static const prog_char str_res_syncltch[] PROGMEM = "Sync Latch";
 static const prog_char str_res_polyseq[] PROGMEM = "Poly Sequencer";
 static const prog_char str_res_arpeggio[] PROGMEM = "Arpeggiator";
-static const prog_char str_res_bpm_cntr[] PROGMEM = "BPM Metter";
+static const prog_char str_res_bpm_cntr[] PROGMEM = "BPM Meter";
 static const prog_char str_res_cc_knob[] PROGMEM = "CC & NRPN Knob";
 static const prog_char str_res_chordmem[] PROGMEM = "Chord Memory";
 static const prog_char str_res_clock[] PROGMEM = "Clock Source";
